@@ -1,0 +1,63 @@
+<% if user_signed_in? %>
+    <div class="button-wrap"> 
+        <%= link_to"/posts/new" do%>
+            <div class="button">
+                    募集する
+            </div>
+        <%end%>
+    </div>
+<%else%>
+    <div class="button-wrap"> 
+        <%= link_to"/users/new" do%>
+            <div class="button">
+                    募集する
+            </div>
+        <%end%>
+    </div>
+<%end%>
+
+<div class="navi-box">
+    <ul class="navi">
+        <%= link_to"/posts" do%><li class="navi-in">すべて</li><%end%>
+        <%= link_to"/index/an" do%><li class="navi-in">アンレ</li><%end%>
+        <%= link_to"/index/con" do%><li class="navi-in">コンペ</li><%end%>
+        <%= link_to"/index/cus" do%><li class="navi-in">カスタム</li><%end%>
+        <%= link_to"/index/oth" do%><li class="navi-in">その他</li><%end%>
+    </ul>
+</div>
+
+<%@posts.each do |post|%>
+    <div class="item-box-wrap">
+        <div class="a-wrap">
+            <%= link_to "/posts/#{post.id}" do %>
+                <div class="item-box">
+                    <div class="item-box-top">
+                        <div class="icon-box">
+                            <%= attachment_image_tag post.user, :profile_image, fallback: "no_image.png", class: ".icon-box" %>
+                        </div>
+                        <div class="name-space">
+                            <%= post.user.name %>
+                        </div>
+                        <div class="rank">
+                            <%= post.user.rank%>
+                        </div>
+                    </div>
+                    <div class="item-box-mid">
+                        <div class="mode">
+                            <%=post.mode%>
+                        </div>
+                        <div class="nop">
+                            募集人数:<%= post.nop %>人
+                        </div>
+                    </div>
+                    <div class="text-space">
+                        <%= post.text %>
+                    </div>
+                    <p class="caption"><%= "#{post.comments.count} コメント" %></p>
+                </div>
+            <% end %>
+        </div>
+    </div>
+<%end%>
+
+<%= paginate @posts %>

@@ -1,0 +1,28 @@
+<div class="new-page-wrap">
+    <div class="new-page">
+        <h1>投稿する</h1>
+        <% @post.errors.full_messages.each do |message| %>
+            <div class="form-error">
+                <%= message %>
+            </div>
+        <% end %>
+        <div class="item-box">
+            <%= form_with model: @post, url: "/posts/#{@post.id}", local:true do |f| %>
+                <div class="select-box">
+                    <div>
+                        モード<br>
+                        <%= f.select :mode, [["アンレート", "アンレート"], ["コンペティティブ", "コンペティティブ"],["カスタム", "カスタム"],["その他", "その他"]], include_blank: "選択して下さい" %>
+                    </div>
+                    <div>
+                        募集人数<br>
+                        <%= f.select :nop,[["1人", "1"], ["2人", "2"],["3人", "3"],["4人", "4"],["5人", "5"],["6人", "6"],["7人", "7"],["8人", "8"],["9人", "9"]], include_blank: "選択して下さい" %>
+                    </div>
+                </div>
+                <%= f.text_area :text %><br>
+                <div class="button-wrap">
+                        <%= f.submit '送信！！',class: "button" %>
+                </div>
+            <%end%>
+        </div>
+    </div>
+</div>

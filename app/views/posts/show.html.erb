@@ -1,0 +1,92 @@
+<div class="d-flex">
+    <% if @comment.errors.any? %>
+        <div class="card text-center card text-white bg-danger mb-3">
+        <%= @comment.errors.count %>件のエラーが発生しました
+        <% @comment.errors.full_messages.each do |message| %>
+            <%= message %>
+        <% end %>
+        </div>
+    <% end %>
+
+    <div class="item-box-wrap">
+        <div class="a-wrap">
+            <div class="item-box">
+                <div class="item-box-top">
+                    <div class="icon-box">
+                        <%= attachment_image_tag @post.user, :profile_image, fallback: "no_image.png", class: ".icon-box" %>
+                    </div>
+                    <%= link_to user_path(@post.user.id) do%>
+                    <div class="name-space">
+                        <%= @post.user.name %>
+                    </div>
+                    <%end%>
+                </div>
+                <div class="item-box-mid">
+                    <div class="mode">
+                        <%=@post.mode%>
+                    </div>
+                    <div class="nop">
+                        <%= @post.nop %>
+                    </div>
+                </div>
+                <div class="text-space">
+                    <%=@post.text%>
+                </div>
+                <div class="post-time">
+                    <div class="time-color">
+                        <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
+                    </div>
+                </div>
+                <% if current_user == @post.user %>
+                    <div class="s-button-wrap">
+                        <div class="s-button">
+                            <%= link_to '編集', edit_post_path(@post.id) %>
+                        </div>
+                        <div class="s-button">
+                            <%= link_to '削除', post_path(@post.id),data: { "turbo-method": :delete }%>
+                        </div>
+                    </div>
+                <%end%>
+                </div>
+        </div>
+    </div>
+    
+    <div class="comments-wrap">
+        <div class="comments">
+            <%= form_with(model:[@post, @comment], local: true) do |f| %>
+            <p>コメント件数：<%= @comments.count %></p>
+            <%= f.text_area :comment,placeholder: "コメントする" %>
+            <div class="send-button">
+                <%= f.submit "送信する", class: "btn btn-success mb-4" %>
+            </div>
+            <% end %>
+            <% @comments.each do |comment| %>
+                <div class="comments-index">
+                    <div class="comment-top">
+                        <div class="icon-box">
+                            <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.png", class: ".icon-box" %>
+                        </div>
+                        <%=link_to comment.user.name,user_path(comment.user.id)%>
+                    </div>
+                        <div class="d-flex">
+                            <div class="comment-main">
+                            <%= comment.comment %>
+                            </div>
+                        </div>
+                </div>
+                <div class="comment-time">
+                    <%= comment.created_at.strftime('%H:%M') %>
+                </div>
+                <% if comment.user == current_user %>
+                <div class="comment-delete">
+                    <%= link_to "削除", post_comment_path(comment.post, comment),data: { "turbo-method": :delete }%>
+                </div>
+            <% end %>
+            <% end %>
+            <%= paginate @comments %>
+        </div>
+    </div>
+</div>
+<div class="back-top">
+<%= link_to '募集一覧ページへ', posts_path %>
+</div>

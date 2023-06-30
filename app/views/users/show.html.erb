@@ -1,0 +1,63 @@
+<div class="cover-user-show">
+    <div class="container">
+        <!-- <div class="row justify-content-center">
+            <% if user_signed_in? && @user == current_user %>
+        <h1>マイページ</h1>
+            <% else %>
+            <h1><%= @user.name %>さんのページ</h1>
+            <% end %>
+        </div> -->
+        <div class="my-page-wrap">
+        <div class="d-flex">
+            <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.png", class: "mb-3 profile-img" %>
+        </div>
+        <h1><%= @user.name %></h1>
+        <% if user_signed_in? && @user == current_user %>
+        <div class="edit-button">
+            <%= link_to "アイコン変更", edit_user_path(@user), class: "btn-sm btn-success" %>
+        </div>
+        <div class="edit-button">
+            <%= link_to("ログイン情報編集","/users/edit")%>
+        </div>
+        <% end %>
+    </div>
+    
+        <div class="row justify-content-center">
+            <%@posts.each do |post|%>
+                <div class="item-box-wrap">
+                    <div class="a-wrap">
+                        <%= link_to "/posts/#{post.id}" do %>
+                            <div class="item-box">
+                                <div class="item-box-top">
+                                    <div class="icon-box">
+                                        <%= attachment_image_tag post.user, :profile_image, fallback: "no_image.png", class: ".icon-box" %>
+                                    </div>
+                                    <div class="name-space">
+                                        <%= post.user.name %>
+                                    </div>
+                                    <div class="rank">
+                                        <%= post.user.rank%>
+                                    </div>
+                                </div>
+                                <div class="item-box-mid">
+                                    <div class="mode">
+                                        <%=post.mode%>
+                                    </div>
+                                    <div class="nop">
+                                        募集人数:<%= post.nop %>人
+                                    </div>
+                                </div>
+                                <div class="text-space">
+                                    <%= post.text %>
+                                </div>
+                                <p class="caption"><%= "#{post.comments.count} コメント" %></p>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            <%end%>
+        </div>
+        <%= paginate @posts %>
+    </div>
+</div>
+

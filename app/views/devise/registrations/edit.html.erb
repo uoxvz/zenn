@@ -1,0 +1,68 @@
+<%= devise_error_messages! %>
+<div class="box1-1">
+  <div class="box-inner">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name),id: 'new_user',class: 'new_user', html: { method: :put }) do |f| %>
+    <h1>ユーザー情報編集</h1>
+    <div class="box-name">
+      <%= f.label :name, "名前" %><br />
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+    <div class="box-rank">
+      <%= f.label :rank, "ランク" %><br />
+      <%= f.select :rank, [
+        ["アンランク", "un"], 
+        ["アイアン1", "i1"],
+        ["アイアン2", "i2"],
+        ["アイアン3", "i3"],
+        ["ブロンズ1", "b1"],
+        ["ブロンズ2", "b2"],
+        ["ブロンズ3", "b3"],
+        ["シルバー1", "s1"],
+        ["シルバー2", "s2"],
+        ["シルバー3", "s3"],
+        ["ゴールド1", "g1"],
+        ["ゴールド2", "g2"],
+        ["ゴールド3", "g3"],
+        ["プラチナ1", "p1"],
+        ["プラチナ2", "p2"],
+        ["プラチナ3", "p3"],
+        ["ダイア1", "d1"],
+        ["ダイア2", "d2"],
+        ["ダイア3", "d3"],
+        ["カメムシ", "a1"],
+        ["アセンダント2", "a2"],
+        ["アセンダント3", "a3"],
+        ["イモータル1", "imo1"],
+        ["イモータル2", "imo2"],
+        ["イモータル3", "imo3"],
+        ["valorant", "rs"]], include_blank: "選択して下さい" %>
+    </div>
+
+    <div class="box-password">
+      新しいパスワード
+      <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> 文字以上入力してください</em>
+    <% end %>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="box-password">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+    <div class="box-password">
+      <%= f.label :current_password %> <br />
+      <%= f.password_field :current_password, autocomplete: "current-password" %>
+    </div>
+
+    <div class="box-login">
+      <%= f.submit "情報更新" %>
+    </div>
+    <% end %>
+    <div class="d-account">
+      <p>アカウントを削除しますか？</p>
+      <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,3 @@
-
 <% if user_signed_in? %>
     <div class="button-wrap"> 
         <%= link_to"/posts/new" do%>
@@ -42,13 +41,20 @@
                         <div class="rank">
                             <%= post.user.rank%>
                         </div>
+                        <div class="gender">
+                            <% if post.user.gender == "f"%>
+                            🚺
+                            <%else%>
+                            🚹
+                            <%end%>
+                        </div>
                     </div>
                     <div class="item-box-mid">
                         <div class="mode">
                             <%=post.mode%>
                         </div>
                         <div class="nop">
-                            募集人数:<%= post.nop %>人
+                            ＠<%= post.nop %>
                         </div>
                     </div>
                     <div class="text-space">

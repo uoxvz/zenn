@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_23_074915) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_03_090921) do
   create_table "comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_23_074915) do
     t.string "mode"
     t.string "nop"
     t.integer "user_id"
+    t.string "discord"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -41,6 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_23_074915) do
     t.string "profile"
     t.string "profile_image_id"
     t.string "email", default: "", null: false
+    t.string "gender"
     t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

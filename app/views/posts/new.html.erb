@@ -18,6 +18,11 @@
                         <%= f.select :nop,[["1人", "1"], ["2人", "2"],["3人", "3"],["4人", "4"],["5人", "5"],["6人", "6"],["7人", "7"],["8人", "8"],["9人", "9"]], include_blank: "選択して下さい" %>
                     </div>
                 </div>
+                discord招待URL
+                <div class="url">
+                <%= f.text_area :discord %><br>
+                </div>
+                募集内容
                 <%= f.text_area :text %><br>
                 <div class="button-wrap">
                         <%= f.submit '送信！！',class: "button" %>

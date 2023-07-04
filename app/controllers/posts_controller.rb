@@ -64,7 +64,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:mode, :text, :nop,:profile_image)
+    params.require(:post).permit(:mode, :text, :nop,:profile_image,:discord)
   end
 
 

@@ -12,21 +12,38 @@
         <div class="a-wrap">
             <div class="item-box">
                 <div class="item-box-top">
-                    <div class="icon-box">
-                        <%= attachment_image_tag @post.user, :profile_image, fallback: "no_image.png", class: ".icon-box" %>
+                    <div class="top-left">
+                        <div class="icon-box">
+                            <%= attachment_image_tag @post.user, :profile_image, fallback: "no_image.png", class: ".icon-box" %>
+                        </div>
+                        <%= link_to user_path(@post.user.id) do%>
+                        <div class="name-space">
+                            <%= @post.user.name %>
+                        </div>
+                        <%end%>
+                        <div class="gender">
+                            <% if @post.user.gender == "f"%>
+                            🚺
+                            <%else%>
+                            🚹
+                            <%end%>
+                        </div>
                     </div>
-                    <%= link_to user_path(@post.user.id) do%>
-                    <div class="name-space">
-                        <%= @post.user.name %>
+                    <div class="top-right">
+                        discordサーバーに参加する！
+                        <%=link_to @post.discord do%>
+                        <div class="discord">
+                            <%=image_tag "Discord_Icon.png"%>
+                        </div>
+                        <%end%>
                     </div>
-                    <%end%>
                 </div>
                 <div class="item-box-mid">
                     <div class="mode">
                         <%=@post.mode%>
                     </div>
                     <div class="nop">
-                        <%= @post.nop %>
+                        ＠<%= @post.nop %>
                     </div>
                 </div>
                 <div class="text-space">
@@ -66,7 +83,17 @@
                         <div class="icon-box">
                             <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.png", class: ".icon-box" %>
                         </div>
+                        <% if comment.user == current_user %>
+                            <div class="oder">募集者</div>
+                        <%end%>
                         <%=link_to comment.user.name,user_path(comment.user.id)%>
+                        <div class="gender">
+                            <% if comment.user.gender == "f"%>
+                            🚺
+                            <%else%>
+                            🚹
+                            <%end%>
+                        </div>
                     </div>
                         <div class="d-flex">
                             <div class="comment-main">

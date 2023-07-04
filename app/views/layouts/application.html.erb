@@ -13,7 +13,7 @@
   <body>
     <header>
       <div class="Logo">
-        <%= link_to("logo🐮","/posts")%>
+        <%= link_to("🐮✋","/posts")%>
       </div>
       <ul>
         <% if user_signed_in? %>
@@ -39,5 +39,10 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+    <footer>
+      <div class="foot">
+        &copy;2023/にょっす
+      </div>
+    </footer>
   </body>
 </html>

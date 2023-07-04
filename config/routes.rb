@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  root 'homes#top'
+
   get "/" => 'homes#top'
 
   get "index/con" => "posts#indexcon"

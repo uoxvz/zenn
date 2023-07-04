@@ -48,14 +48,16 @@
     <div class="box-password">
       <%= f.label :password, "パスワード" %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em>(<%= @minimum_password_length %> 文字以上入力してください)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.password_field :password, autocomplete: "new-password",id:"pass1" %>
+      <input type="checkbox" onChange="document.getElementById('pass1').type = (this.checked) ? 'text' : 'password';">パスワードを表示する
     </div>
 
     <div class="box-password">
       <%= f.label :password_confirmation, "パスワード(確認)" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password",id:"pass2" %>
+      <input type="checkbox" onChange="document.getElementById('pass2').type = (this.checked) ? 'text' : 'password';">パスワードを表示する
     </div>
 
     <div class="box-login">

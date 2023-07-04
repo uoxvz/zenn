@@ -16,7 +16,8 @@
           <%= link_to "パスワードを忘れた場合", new_user_password_path %>
         </div>
       </div>
-      <%= f.password_field :password, autocomplete: "current-password" %>
+      <%= f.password_field :password, autocomplete: "current-password",id:"pass5" %>
+      <input type="checkbox" onChange="document.getElementById('pass5').type = (this.checked) ? 'text' : 'password';">パスワードを表示する
     </div>
     <div class="box-login">
       <%= f.submit "ログイン" %>

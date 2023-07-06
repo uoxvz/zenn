@@ -351,6 +351,7 @@ DEPENDENCIES
   carrierwave
   debug
   devise
+  dotenv
   dotenv-rails
   fog-aws
   importmap-rails

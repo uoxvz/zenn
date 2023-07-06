@@ -49,15 +49,15 @@ gem 'devise'
 
 gem 'kaminari'
 
-gem "refile", require: "refile/rails", github: 'manfe/refile'
+# gem "refile", require: "refile/rails", github: 'manfe/refile'
 
-gem "refile-mini_magick"
+# gem "refile-mini_magick"
 
 gem 'rails-i18n'
 
 gem "bulma-rails"
 
-gem "refile-s3"
+# gem "refile-s3"
 
 gem 'dotenv-rails'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -101,3 +101,5 @@ gem "mini_magick"
 gem "fog-aws"
 
 gem 'dotenv'
+
+# gem 'carrierwave-aws'

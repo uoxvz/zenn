@@ -1,12 +1,3 @@
-GIT
-  remote: https://github.com/manfe/refile.git
-  revision: 46b4178654e60bb5846b1423acf6d0740cdecc25
-  specs:
-    refile (0.6.2)
-      mime-types
-      rest-client (~> 2)
-      sinatra (~> 2.0.0.beta2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -77,16 +68,6 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
-    aws-eventstream (1.2.0)
-    aws-sdk (2.11.632)
-      aws-sdk-resources (= 2.11.632)
-    aws-sdk-core (2.11.632)
-      aws-sigv4 (~> 1.0)
-      jmespath (~> 1.0)
-    aws-sdk-resources (2.11.632)
-      aws-sdk-core (= 2.11.632)
-    aws-sigv4 (1.6.0)
-      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.16.0)
@@ -122,8 +103,6 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    domain_name (0.5.20190701)
-      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -149,9 +128,6 @@ GEM
     formatador (1.1.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
-    http-accept (1.7.0)
-    http-cookie (1.0.5)
-      domain_name (~> 0.5)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -166,7 +142,6 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jmespath (1.6.2)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -198,8 +173,6 @@ GEM
     minitest (5.18.1)
     msgpack (1.7.1)
     multi_json (1.15.0)
-    mustermann (1.1.2)
-      ruby2_keywords (~> 0.0.1)
     net-imap (0.3.6)
       date
       net-protocol
@@ -209,7 +182,6 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
-    netrc (0.11.0)
     nio4r (2.5.9)
     nokogiri (1.15.2-x86_64-darwin)
       racc (~> 1.4)
@@ -222,8 +194,6 @@ GEM
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.7)
-    rack-protection (2.0.8.1)
-      rack
     rack-test (2.1.0)
       rack (>= 1.3)
     rails (7.0.5)
@@ -257,27 +227,15 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
-    refile-mini_magick (0.2.0)
-      mini_magick (~> 4.0)
-      refile (~> 0.5)
-    refile-s3 (0.2.0)
-      aws-sdk (~> 2.0)
-      refile (~> 0.6.0)
     regexp_parser (2.8.1)
     reline (0.3.5)
       io-console (~> 0.5)
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rest-client (2.1.0)
-      http-accept (>= 1.7.0, < 2.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
     rexml (3.2.5)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
-    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -291,11 +249,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sinatra (2.0.8.1)
-      mustermann (~> 1.0)
-      rack (~> 2.0)
-      rack-protection (= 2.0.8.1)
-      tilt (~> 2.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -317,9 +270,6 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.8.2)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -362,9 +312,6 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.5)
   rails-i18n
-  refile!
-  refile-mini_magick
-  refile-s3
   sassc-rails
   selenium-webdriver
   sprockets-rails

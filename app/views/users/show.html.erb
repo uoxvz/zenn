@@ -9,7 +9,11 @@
         </div> -->
         <div class="my-page-wrap">
         <div class="d-flex">
-            <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.png", class: "mb-3 profile-img" %>
+            <% if @user.avatar? %>
+                <%= image_tag @user.avatar.url %>
+            <% else %>
+                <%= image_tag ("no_image.png") %>
+            <% end %>
         </div>
         <h1><%= @user.name %></h1>
         <% if user_signed_in? && @user == current_user %>
@@ -30,7 +34,11 @@
                             <div class="item-box">
                                 <div class="item-box-top">
                                     <div class="icon-box">
-                                        <%= attachment_image_tag post.user, :profile_image, fallback: "no_image.png", class: ".icon-box" %>
+                                        <% if @user.avatar? %>
+                                            <%= image_tag @user.avatar.url %>
+                                        <% else %>
+                                            <%= image_tag ("no_image.png") %>
+                                        <% end %>
                                     </div>
                                     <div class="name-space">
                                         <%= post.user.name %>

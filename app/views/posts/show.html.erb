@@ -14,7 +14,11 @@
                 <div class="item-box-top">
                     <div class="top-left">
                         <div class="icon-box">
-                            <%= attachment_image_tag @post.user, :profile_image, fallback: "no_image.png", class: ".icon-box" %>
+                            <% if @post.user.avatar? %>
+                                <%= image_tag @post.user.avatar.url %>
+                            <% else %>
+                                <%= image_tag ("no_image.png") %>
+                            <% end %>
                         </div>
                         <%= link_to user_path(@post.user.id) do%>
                         <div class="name-space">
@@ -83,7 +87,11 @@
                 <div class="comments-index">
                     <div class="comment-top">
                         <div class="icon-box">
-                            <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.png", class: ".icon-box" %>
+                            <% if comment.user.avatar? %>
+                                <%= image_tag comment.user.avatar.url, class: ".icon-box" %>
+                            <% else %>
+                                <%= image_tag ("no_image.png") %>
+                            <% end %>
                         </div>
                         <% if comment.user == current_user %>
                             <div class="oder">募集者</div>

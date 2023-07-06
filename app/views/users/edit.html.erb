@@ -5,8 +5,16 @@
             <%= form_with model: @user, local:true do |f| %>
                 <div class="icon-form-group">
                     <label class="form-label">プロフィール画像</label><br>
-                    <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.png", class: "mb-3 profile-img" %><br>
-                    <%= f.file_field :profile_image, placeholder: "プロフィール画像" %>
+                    <!-- <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.png", class: "mb-3 profile-img" %><br> -->
+                    <% if @user.avatar? %>
+                        <%= image_tag @user.avatar.url %>
+                    <% else %>
+                        <%= image_tag ("no_image.png") %>
+                    <% end %>
+                    <div class="field">
+                        <%= f.label :avatar %>
+                        <%= f.file_field :avatar %>
+                    </div>
                 </div>
                 <div class="btn-box">
                     <%= f.submit '保存する', class: "btn btnt-success" %>

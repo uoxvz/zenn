@@ -33,7 +33,11 @@
                 <div class="item-box">
                     <div class="item-box-top">
                         <div class="icon-box">
-                            <%= attachment_image_tag post.user, :profile_image, fallback: "no_image.png", class: ".icon-box" %>
+                            <% if post.user.avatar? %>
+                                <%= image_tag post.user.avatar.url , class: ".icon-box"%>
+                            <% else %>
+                                <%= image_tag ("no_image.png") %>
+                            <% end %>
                         </div>
                         <div class="name-space">
                             <%= post.user.name %>
@@ -70,4 +74,3 @@
 <%end%>
 
 <%= paginate @posts %>
-

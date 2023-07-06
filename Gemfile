@@ -95,3 +95,7 @@ group :test do
 end
 
 gem "webrick", "~> 1.8"
+
+gem 'carrierwave'
+
+gem "mini_magick"

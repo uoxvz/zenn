@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,:recoverable, :rememberable, :validatable,
   :authentication_keys => [:name]
 
+  mount_uploader :avatar, AvatarUploader
+
   validates_uniqueness_of :name
   validates_presence_of :name
   def email_required?

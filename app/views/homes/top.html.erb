@@ -33,7 +33,11 @@
                 <div class="item-box">
                     <div class="item-box-top">
                         <div class="icon-box">
-                            <%= attachment_image_tag post.user, :profile_image, fallback: "no_image.png", class: ".icon-box" %>
+                            <% if post.user.avatar? %>
+                                <%= image_tag post.user.avatar.url , class: ".icon-box"%>
+                            <% else %>
+                                <%= image_tag ("no_image.png") %>
+                            <% end %>
                         </div>
                         <div class="name-space">
                             <%= post.user.name %>
@@ -41,19 +45,28 @@
                         <div class="rank">
                             <%= post.user.rank%>
                         </div>
+                        <div class="gender">
+                            <% if post.user.gender == "f"%>
+                            🚺
+                            <%else%>
+                            🚹
+                            <%end%>
+                        </div>
                     </div>
                     <div class="item-box-mid">
                         <div class="mode">
                             <%=post.mode%>
                         </div>
                         <div class="nop">
-                            募集人数:<%= post.nop %>人
+                            ＠<%= post.nop %>
                         </div>
                     </div>
                     <div class="text-space">
                         <%= post.text %>
                     </div>
-                    <p class="caption"><%= "#{post.comments.count} コメント" %></p>
+                    <div class="come">
+                        <p class="caption"><%= "#{post.comments.count} コメント" %></p>
+                    </div>
                 </div>
             <% end %>
         </div>

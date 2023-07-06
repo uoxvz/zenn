@@ -10,11 +10,12 @@ CarrierWave.configure do |config|
     config.fog_public = false
     config.fog_credentials = {
         provider: 'AWS',
-        aws_access_key_id: ENV['AKIAZ2I7KVX2KMZLMKHW'], # アクセスキー
-        aws_secret_access_key: ENV['wle/X/NAK2mRwM27fZq9cOdBeGxg+L7G7kgbzFkz'], # シークレットアクセスキー
-        region: 'ap-northeast-1', # リージョン
-        path_style: true
+        aws_access_key_id: Rails.application.credentials.aws[:access_key_id],
+        aws_secret_access_key: Rails.application.credentials.aws[:secret_access_key],
+        # credentials下にaws_access_key_idとaws_secret_access_keyはあるよ
+        region: 'ap-northeast-1'
     }
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/carrierwave-heroku'
     else # 本番環境以外の場合はアプリケーション内にアップロード
     config.storage :file
     config.enable_processing = false if Rails.env.test?

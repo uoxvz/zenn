@@ -18,7 +18,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 elsif Rails.env.test? # テスト環境の場合
   storage :file
 else # 本番環境の場合
-  storage :fog
+  storage :file
 end
 
   include CarrierWave::MiniMagick

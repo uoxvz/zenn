@@ -5,11 +5,10 @@
             <%= form_with model: @user, local:true do |f| %>
                 <div class="icon-form-group">
                     <label class="form-label">プロフィール画像</label><br>
-                    <!-- <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.png", class: "mb-3 profile-img" %><br> -->
                     <% if @user.avatar? %>
                         <%= image_tag @user.avatar.url %>
                     <% else %>
-                        <%= image_tag ("no_image.png") %>
+                        <%= image_tag ("no_image.png"),class:"icon" %>
                     <% end %>
                     <div class="field">
                         <%= f.label :avatar %>

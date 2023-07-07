@@ -1,50 +1,22 @@
-# require 'carrierwave/storage/abstract'
-# require 'carrierwave/storage/file'
-# require 'carrierwave/storage/fog'
-
-# CarrierWave.configure do |config|
-#     if Rails.env.production? # 本番環境の場合はS3へアップロード
-#     config.storage :fog
-#     config.fog_provider = 'fog/aws'
-#     config.fog_directory  = "ENV['carrierwave-heroku']" # バケット名
-#     config.fog_public = false
-#     config.fog_credentials = {
-#         provider: 'AWS',
-#         aws_access_key_id: ENV['AKIAZ2I7KVX2DNSYL4MW'], # アクセスキー
-#         aws_secret_access_key: ENV['mG54REyKKMCo9AuguL7S3ZZAQ023ucLxtPax6Gch'], # シークレットアクセスキー
-#         region: 'ap-northeast-1', # リージョン
-#         path_style: true
-#     }
-#     else # 本番環境以外の場合はアプリケーション内にアップロード
-#     config.storage :file
-#     config.enable_processing = false if Rails.env.test?
-#     end
-# end
 require 'carrierwave/storage/abstract'
 require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
 
-# 保存先の分岐
 CarrierWave.configure do |config|
-    # 本番環境はS3に保存
-    if Rails.env.production?
-    config.storage = :fog
+    if Rails.env.production? # 本番環境の場合はS3へアップロード
+    config.storage :fog
     config.fog_provider = 'fog/aws'
-    config.fog_directory  = 'inspigram-image-store'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/inspigram-image-store'
-    # iam_profile
+    config.fog_directory  = "ENV['carrierwave-heroku']" # バケット名
+    config.fog_public = false
     config.fog_credentials = {
         provider: 'AWS',
-        # credentialsで管理
-        aws_access_key_id: Rails.application.credentials.aws[:access_key_id],
-        aws_secret_access_key: Rails.application.credentials.aws[:secret_access_key],
-        region: 'ap-northeast-1' #東京リージョン
+        aws_access_key_id: ENV['AKIAZ2I7KVX2DNSYL4MW'], # アクセスキー
+        aws_secret_access_key: ENV['mG54REyKKMCo9AuguL7S3ZZAQ023ucLxtPax6Gch'], # シークレットアクセスキー
+        region: 'ap-northeast-1', # リージョン
+        path_style: true
     }
-    # キャッシュをS3に保存
-    # config.cache_storage = :fog
-    else
-    # 開発環境はlocalに保存
+    else # 本番環境以外の場合はアプリケーション内にアップロード
     config.storage :file
-    config.enable_processing = false if Rails.env.test? #test:処理をスキップ
-    end  
+    config.enable_processing = false if Rails.env.test?
+    end
 end
